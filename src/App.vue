@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { NIconBg } from "./components/icon";
+import { NTabBar } from "./components/tab-bar";
+import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <RouterView />
+  <n-icon-bg />
+  <n-tab-bar />
+  <router-view />
 </template>
 
 <style lang="scss" scoped></style>
