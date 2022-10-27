@@ -1,3 +1,11 @@
+<!--
+ * @Author: Coooookies admin@mitay.net
+ * @Date: 2022-10-28 00:33:54
+ * @LastEditors: Coooookies admin@mitay.net
+ * @LastEditTime: 2022-10-28 00:55:30
+ * @FilePath: \novelai-tagdictionary-webui\src\components\tab-bar\tab-bar.vue
+ * @Description: 
+-->
 <script setup lang="ts">
 import tabTitle from "./tab-bar-icon-title.vue";
 import tabSubTitle from "./tab-bar-icon-subtitle.vue";
@@ -11,7 +19,7 @@ import tabMenu from "./tab-bar-menu.vue";
         <tab-title />
         <tab-sub-title />
       </div>
-
+      <div class="app-header__hr app-header__hr__icon" />
       <div class="app-header__menu">
         <tab-menu />
       </div>
@@ -33,6 +41,17 @@ import tabMenu from "./tab-bar-menu.vue";
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  & &__hr {
+    height: 24px;
+    width: 1px;
+    margin: 0 18px;
+    background-color: var(--nav-border-color);
+
+    &__icon {
+      margin-left: 38px;
+    }
+  }
 
   & &__icon {
     display: flex;
@@ -60,7 +79,8 @@ import tabMenu from "./tab-bar-menu.vue";
     & &__icon {
       align-items: center;
     }
-
+    
+    & &__hr,
     & &__menu {
       display: none;
     }
@@ -69,7 +89,7 @@ import tabMenu from "./tab-bar-menu.vue";
 
 @media only screen and (min-width: 920px) {
   .app-header {
-    height: 86px;
+    height: 82px;
     padding: 0 38px;
 
     & &__icon {
