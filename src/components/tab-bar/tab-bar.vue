@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-28 00:33:54
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-28 00:55:30
+ * @LastEditTime: 2022-10-29 00:24:10
  * @FilePath: \novelai-tagdictionary-webui\src\components\tab-bar\tab-bar.vue
  * @Description: 
 -->
@@ -10,6 +10,13 @@
 import tabTitle from "./tab-bar-icon-title.vue";
 import tabSubTitle from "./tab-bar-icon-subtitle.vue";
 import tabMenu from "./tab-bar-menu.vue";
+import tabMenuSwitch from "./tab-bar-menu-switch.vue";
+
+import { NLanguageCaller } from "../language";
+import { NButton } from "../../components/button";
+import { ref } from "vue";
+
+const tabLabOpened = ref(false);
 </script>
 
 <template>
@@ -20,9 +27,18 @@ import tabMenu from "./tab-bar-menu.vue";
         <tab-sub-title />
       </div>
       <div class="app-header__hr app-header__hr__icon" />
-      <div class="app-header__menu">
-        <tab-menu />
+      <div class="app-header__menu" :class="{ _open: tabLabOpened }">
+        <tab-menu class="app-header__menu__content" />
+        <n-language-caller class="app-header__menu__language" />
       </div>
+      <div class="app-header__action">
+        <n-button icon-name="upload" text="投稿" />
+      </div>
+      <tab-menu-switch
+        class="app-header__switch"
+        :is-enable="tabLabOpened"
+        @on-switch="tabLabOpened = !tabLabOpened"
+      />
     </div>
   </header>
 </template>
@@ -33,9 +49,11 @@ import tabMenu from "./tab-bar-menu.vue";
   top: 0;
   left: 0;
   right: 0;
+  z-index: 6000;
 }
 
 .app-header {
+  position: relative;
   border-bottom: solid 1px var(--nav-border-color);
   background-color: var(--nav-background-color);
   display: flex;
@@ -67,22 +85,78 @@ import tabMenu from "./tab-bar-menu.vue";
   }
 
   & &__menu {
+    display: flex;
     flex: 1;
+  }
+
+  & &__action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 16px;
+  }
+
+  & &__switch {
+    padding: 8px;
   }
 }
 
 @media only screen and (max-width: 919px) {
   .app-header {
     height: 60px;
+    padding: 0 16px;
     justify-content: center;
 
     & &__icon {
+      flex: 1;
       align-items: center;
+      padding-left: 30px;
     }
-    
+
     & &__hr,
-    & &__menu {
+    & &__action {
       display: none;
+    }
+
+    & &__menu {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 20px;
+      background-color: var(--nav-background-color);
+      flex-direction: column;
+      z-index: 5000;
+
+      &__language {
+        margin: auto 0 10px 10px;
+        margin-top: auto;
+      }
+
+      & {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 260ms, visibility 260ms;
+
+        .app-header__menu__content {
+          transition: transform 260ms;
+          transform: translateY(-6px);
+        }
+      }
+
+      &._open {
+        opacity: 1;
+        visibility: visible;
+
+        .app-header__menu__content {
+          transform: translateY(0px);
+        }
+      }
+    }
+
+    & &__switch {
+      margin-left: auto;
     }
   }
 }
@@ -94,6 +168,19 @@ import tabMenu from "./tab-bar-menu.vue";
 
     & &__icon {
       align-items: flex-start;
+    }
+
+    & &__menu {
+      flex-direction: row;
+      align-items: center;
+
+      &__language {
+        margin-left: auto;
+      }
+    }
+
+    & &__switch {
+      display: none;
     }
   }
 }

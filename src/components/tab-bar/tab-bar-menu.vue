@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-28 00:33:54
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-28 00:50:53
+ * @LastEditTime: 2022-10-28 23:06:17
  * @FilePath: \novelai-tagdictionary-webui\src\components\tab-bar\tab-bar-menu.vue
  * @Description: 
 -->
@@ -36,9 +36,6 @@ import { NIcon } from "../icon";
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 9px 22px 9px 20px;
-    border-radius: 50px;
-    margin-right: 8px;
     cursor: pointer;
 
     transition: background-color 150ms;
@@ -46,7 +43,6 @@ import { NIcon } from "../icon";
     .item-icon {
       width: 18px;
       height: 18px;
-      margin-right: 6px;
       fill: var(--color-main);
     }
 
@@ -62,10 +58,6 @@ import { NIcon } from "../icon";
     &:active {
       background-color: var(--nav-background-color-active);
       transition: background-color 50ms;
-    }
-
-    &:last-child {
-      margin-right: 0;
     }
 
     &.__active {
@@ -86,12 +78,46 @@ import { NIcon } from "../icon";
 @media only screen and (max-width: 919px) {
   .app-header__menu__target {
     flex-direction: column;
+
+    & &__item {
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+
+      .item-icon {
+        margin-right: 8px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
 @media only screen and (min-width: 920px) {
   .app-header__menu__target {
     flex-direction: row;
+
+    & &__item {
+      align-items: center;
+      padding: 9px 22px 9px 20px;
+      border-radius: 50px;
+      margin-right: 8px;
+
+      .item-text {
+        font-size: 14px;
+        color: var(--color-main);
+      }
+
+      .item-icon {
+        margin-right: 6px;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
 </style>
