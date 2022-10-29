@@ -2,10 +2,139 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-28 21:45:11
+ * @LastEditTime: 2022-10-29 17:48:39
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
-<script setup lang="ts"></script>
-<template></template>
-<style lang="scss" scoped></style>
+<script setup lang="ts">
+import { NGrid } from "@/components/grid";
+import { NSelect } from "@/components/select";
+import { NButton } from "@/components/button";
+import { NCheckbox } from "@/components/checkbox";
+import { NInput } from "@/components/input";
+import { ref } from "vue";
+import type { iSelectItems } from "@/components/select";
+
+const _18Plus = ref(true);
+const itemKey = ref("0");
+const items: iSelectItems[] = [
+  {
+    type: "item",
+    key: "0",
+    value: "最受欢迎",
+  },
+  {
+    type: "item",
+    key: "1",
+    value: "最受欢迎 / 1星期内",
+  },
+  {
+    type: "item",
+    key: "2",
+    value: "最受欢迎 / 1个月内",
+  },
+  {
+    type: "item",
+    key: "3",
+    value: "最受欢迎 / 1年内",
+  },
+  { type: "line" },
+  {
+    type: "item",
+    key: "4",
+    value: "最新发布",
+  },
+];
+
+const item2Key = ref("0");
+const items2: iSelectItems[] = [
+  {
+    type: "item",
+    key: "0",
+    value: "StableDiffusion - NovelAI",
+  },
+  {
+    type: "item",
+    key: "1",
+    value: "Naifu - NovelAI",
+  },
+];
+</script>
+
+<template>
+  <div class="page-container">
+    <div class="page-container__action">
+      <div class="page-container__action__selects">
+        <n-select
+          class="page-container__action__selects__item"
+          v-model:current-key="itemKey"
+          :items="items"
+        />
+        <n-select
+          class="page-container__action__selects__item"
+          v-model:current-key="item2Key"
+          :items="items2"
+        />
+        <n-checkbox title="18+" v-model:checked="_18Plus" />
+        <n-input icon-name="search" placeholder="搜索" type="text" />
+      </div>
+      <n-button class="page-container__action__option" title="条件过滤" arrow />
+    </div>
+    <div class="page-container__content">
+      <n-grid />
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.page-container {
+  & &__action {
+    display: flex;
+    flex-direction: row;
+
+    &__selects {
+      display: flex;
+      flex-direction: row;
+
+      &__item {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 920px) {
+  .page-container {
+    & &__action {
+      margin-top: 83px;
+      padding: 72px 72px 0;
+
+      &__option {
+        display: none;
+      }
+    }
+
+    & &__content {
+      padding: 38px 72px;
+    }
+  }
+}
+
+@media only screen and (max-width: 919px) {
+  .page-container {
+    & &__action {
+      border-bottom: solid 1px var(--nav-border-color);
+      margin-top: 61px;
+      padding: 16px 20px;
+
+      &__selects {
+        display: none;
+      }
+    }
+
+    & &__content {
+      padding: 20px;
+    }
+  }
+}
+</style>
