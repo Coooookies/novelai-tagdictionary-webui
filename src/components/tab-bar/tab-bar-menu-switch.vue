@@ -48,7 +48,7 @@ const props = defineProps({
     transform-origin: 100% 50%;
     margin-bottom: 5px;
     transition: transform 300ms, width 300ms;
-    transition-timing-function: cubic-bezier(.43,1.61,.72,1.03);
+    transition-timing-function: cubic-bezier(0.43, 1.61, 0.72, 1.03);
 
     &:last-child {
       margin-bottom: 0;
@@ -61,6 +61,7 @@ const props = defineProps({
 
   &.enable {
     .__line {
+      transition-timing-function: cubic-bezier(0.43, 1.61, 0.72, 1.03);
 
       &:first-child {
         transform: rotate(-45deg);

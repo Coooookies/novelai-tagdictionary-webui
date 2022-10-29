@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-28 00:33:54
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-29 00:24:10
+ * @LastEditTime: 2022-10-29 16:03:08
  * @FilePath: \novelai-tagdictionary-webui\src\components\tab-bar\tab-bar.vue
  * @Description: 
 -->
@@ -13,7 +13,7 @@ import tabMenu from "./tab-bar-menu.vue";
 import tabMenuSwitch from "./tab-bar-menu-switch.vue";
 
 import { NLanguageCaller } from "../language";
-import { NButton } from "../../components/button";
+import { NGuideButton } from "../button";
 import { ref } from "vue";
 
 const tabLabOpened = ref(false);
@@ -32,7 +32,7 @@ const tabLabOpened = ref(false);
         <n-language-caller class="app-header__menu__language" />
       </div>
       <div class="app-header__action">
-        <n-button icon-name="upload" text="投稿" />
+        <n-guide-button icon-name="upload" text="投稿" />
       </div>
       <tab-menu-switch
         class="app-header__switch"
@@ -76,7 +76,7 @@ const tabLabOpened = ref(false);
     flex-direction: column;
 
     svg {
-      fill: var(--color-main);
+      fill: var(--color-default);
 
       &:nth-child(2) {
         margin-top: 3px;
@@ -120,7 +120,7 @@ const tabLabOpened = ref(false);
 
     & &__menu {
       position: fixed;
-      top: 60px;
+      top: 61px;
       left: 0;
       right: 0;
       bottom: 0;

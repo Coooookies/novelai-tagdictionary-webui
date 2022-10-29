@@ -43,12 +43,12 @@ import { NIcon } from "../icon";
     .item-icon {
       width: 18px;
       height: 18px;
-      fill: var(--color-main);
+      fill: var(--color-default);
     }
 
     .item-text {
       font-size: 14px;
-      color: var(--color-main);
+      color: var(--color-default);
     }
 
     &:hover {
@@ -61,7 +61,7 @@ import { NIcon } from "../icon";
     }
 
     &.__active {
-      background-color: var(--color-main);
+      background-color: var(--color-default);
       cursor: default;
 
       .item-icon {
@@ -107,7 +107,7 @@ import { NIcon } from "../icon";
 
       .item-text {
         font-size: 14px;
-        color: var(--color-main);
+        color: var(--color-default);
       }
 
       .item-icon {
