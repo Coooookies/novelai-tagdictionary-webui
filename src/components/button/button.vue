@@ -1,20 +1,24 @@
+<!--
+ * @Author: Coooookies admin@mitay.net
+ * @Date: 2022-10-29 16:03:45
+ * @LastEditors: Coooookies admin@mitay.net
+ * @LastEditTime: 2022-10-29 16:38:06
+ * @FilePath: \novelai-tagdictionary-webui\src\components\button\button.vue
+ * @Description: 
+-->
 <script setup lang="ts">
-import { NIcon } from "../icon";
+import selectMarker from "../select/select-marker.vue";
 
 const props = defineProps({
-  iconName: String,
-  text: String,
+  title: String,
+  arrow: Boolean,
 });
 </script>
 
 <template>
   <button class="n-button">
-    <n-icon
-      class="n-button__icon"
-      :icon-name="props.iconName"
-      v-if="props.iconName"
-    />
-    <span class="n-button__text">{{ props.text }}</span>
+    <span class="n-button__text">{{ props.title }}</span>
+    <select-marker class="n-button__marker" v-if="props.arrow" />
   </button>
 </template>
 
@@ -23,35 +27,49 @@ const props = defineProps({
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 11px 16px;
 
-  padding: 10px 24px;
-  background-color: var(--button-primary-background-color);
-  border-radius: 1000px;
-
-  transition: background-color 150ms;
   cursor: pointer;
+  transition: box-shadow 200ms, opacity 200ms;
 
-  & &__icon {
-    margin: 0 6px 0 -4px;
-    width: 18px;
-    height: 18px;
-    color: white;
-    fill: var(--button-primary-font-color);
+  &:active {
+    transition: none;
   }
 
   & &__text {
     font-size: 14px;
-    color: var(--button-primary-font-color);
+    color: var(--color-default);
   }
 
-  &:hover {
-    background-color: var(--button-primary-hover-background-color);
+  & &__marker {
+    width: 10px;
+    height: 7.5px;
+    transform: rotate(-90deg);
+    margin-left: 12px;
+    fill: var(--color-default);
   }
+}
 
-  &:active {
-    background-color: var(--button-primary-active-background-color);
-    transition: background-color 50ms;
+@media only screen and (max-width: 919px) {
+  .n-button {
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}
+
+@media only screen and (min-width: 920px) {
+  .n-button {
+    &:hover {
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+
+    &:active {
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+    }
   }
 }
 </style>
