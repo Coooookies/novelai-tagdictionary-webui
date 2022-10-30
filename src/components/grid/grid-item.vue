@@ -9,7 +9,7 @@ import { NIcon } from "../icon";
         <img src="/1.png" />
       </div>
       <div class="__image-marker">
-        <div class="__image-marker__r18tag">18+</div>
+        <div class="__image-marker__tag">18+</div>
         <div class="__image-marker__info">
           <n-icon class="__icon" icon-name="document" />
           <span>4</span>
@@ -71,7 +71,9 @@ import { NIcon } from "../icon";
       right: 0;
       padding: 14px 16px 0 14px;
 
-      &__r18tag {
+      &__tag {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
         border-radius: 4px;
         background-color: rgba(0, 0, 0, 0.35);
         color: white;
