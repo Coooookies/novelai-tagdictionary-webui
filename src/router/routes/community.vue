@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-29 17:48:39
+ * @LastEditTime: 2022-10-30 02:13:09
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
@@ -75,10 +75,20 @@ const items2: iSelectItems[] = [
           v-model:current-key="item2Key"
           :items="items2"
         />
-        <n-checkbox title="18+" v-model:checked="_18Plus" />
-        <n-input icon-name="search" placeholder="搜索" type="text" />
+        <n-checkbox
+          class="page-container__action__selects__checkbox"
+          title="18+"
+          v-model:checked="_18Plus"
+        />
       </div>
       <n-button class="page-container__action__option" title="条件过滤" arrow />
+      <n-input
+        simple-on-mobile
+        class="page-container__action__search"
+        icon-name="search"
+        placeholder="搜索"
+        type="text"
+      />
     </div>
     <div class="page-container__content">
       <n-grid />
@@ -86,7 +96,7 @@ const items2: iSelectItems[] = [
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .page-container {
   & &__action {
     display: flex;
@@ -99,6 +109,14 @@ const items2: iSelectItems[] = [
       &__item {
         margin-right: 12px;
       }
+
+      &__checkbox {
+        margin: 0 2px;
+      }
+    }
+
+    &__search {
+      margin-left: auto;
     }
   }
 }
@@ -107,15 +125,19 @@ const items2: iSelectItems[] = [
   .page-container {
     & &__action {
       margin-top: 83px;
-      padding: 72px 72px 0;
+      padding: 36px 72px 0;
 
       &__option {
         display: none;
       }
+
+      &__search {
+        width: 220px;
+      }
     }
 
     & &__content {
-      padding: 38px 72px;
+      padding: 36px 72px;
     }
   }
 }
@@ -123,12 +145,22 @@ const items2: iSelectItems[] = [
 @media only screen and (max-width: 919px) {
   .page-container {
     & &__action {
+      flex-direction: row-reverse;
       border-bottom: solid 1px var(--nav-border-color);
       margin-top: 61px;
       padding: 16px 20px;
 
       &__selects {
         display: none;
+      }
+
+      &__search {
+        flex: 1;
+        margin-right: 12px;
+
+        input {
+          background-color: transparent;
+        }
       }
     }
 
