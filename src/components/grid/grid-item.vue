@@ -15,7 +15,12 @@
     padding-bottom: 70%;
     overflow: hidden;
     border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  & &__info {
+    margin-top: 11px;
+    height: 38px;
   }
 }
 </style>
