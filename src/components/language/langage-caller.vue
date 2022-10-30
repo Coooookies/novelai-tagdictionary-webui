@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-28 14:42:19
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-28 23:06:02
+ * @LastEditTime: 2022-10-31 01:11:52
  * @FilePath: \novelai-tagdictionary-webui\src\components\language\langage-caller.vue
  * @Description: 
 -->
@@ -34,6 +34,7 @@ import { NSelectMarker } from "../select";
 
   & &__text {
     font-size: 14px;
+    font-weight: 500;
     margin-left: 6px;
     color: var(--language-select-caller-color);
   }
