@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-28 00:33:54
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-28 23:06:17
+ * @LastEditTime: 2022-10-31 01:03:17
  * @FilePath: \novelai-tagdictionary-webui\src\components\tab-bar\tab-bar-menu.vue
  * @Description: 
 -->
@@ -43,12 +43,13 @@ import { NIcon } from "../icon";
     .item-icon {
       width: 18px;
       height: 18px;
-      fill: var(--color-default);
+      fill: var(--nav-menu-item-color);
     }
 
     .item-text {
       font-size: 14px;
-      color: var(--color-default);
+      font-weight: 500;
+      color: var(--nav-menu-item-color);
     }
 
     &:hover {
@@ -103,12 +104,7 @@ import { NIcon } from "../icon";
       align-items: center;
       padding: 9px 22px 9px 20px;
       border-radius: 50px;
-      margin-right: 8px;
-
-      .item-text {
-        font-size: 14px;
-        color: var(--color-default);
-      }
+      margin-right: 6px;
 
       .item-icon {
         margin-right: 6px;

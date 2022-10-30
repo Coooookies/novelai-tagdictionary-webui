@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-28 00:33:54
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-29 16:03:08
+ * @LastEditTime: 2022-10-31 01:01:45
  * @FilePath: \novelai-tagdictionary-webui\src\components\tab-bar\tab-bar.vue
  * @Description: 
 -->
@@ -26,7 +26,7 @@ const tabLabOpened = ref(false);
         <tab-title />
         <tab-sub-title />
       </div>
-      <div class="app-header__hr app-header__hr__icon" />
+      <!-- <div class="app-header__hr app-header__hr__icon" /> -->
       <div class="app-header__menu" :class="{ _open: tabLabOpened }">
         <tab-menu class="app-header__menu__content" />
         <n-language-caller class="app-header__menu__language" />
@@ -173,6 +173,7 @@ const tabLabOpened = ref(false);
     & &__menu {
       flex-direction: row;
       align-items: center;
+      margin-left: 36px;
 
       &__language {
         margin-left: auto;
