@@ -11,6 +11,7 @@ const props = defineProps({
   placeholder: String,
   value: String,
   iconName: String,
+  simpleOnMobile: Boolean,
 });
 
 const inputHandler = (event: Event) => {
@@ -19,14 +20,10 @@ const inputHandler = (event: Event) => {
 </script>
 
 <template>
-  <div class="n-input">
-    <n-icon
-      class="n-input__icon"
-      :icon-name="props.iconName"
-      v-if="props.iconName"
-    />
+  <div class="n-input" :class="{ __simple: props.simpleOnMobile }">
+    <n-icon class="__icon" :icon-name="props.iconName" v-if="props.iconName" />
     <input
-      class="n-input__input"
+      class="__input"
       :type="props.type"
       :value="props.value"
       :placeholder="props.placeholder"
@@ -38,6 +35,74 @@ const inputHandler = (event: Event) => {
 
 <style lang="scss" scoped>
 .n-input {
-    
+  position: relative;
+  display: inline-flex;
+
+  .__icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    fill: #a9a9ac;
+  }
+
+  .__input {
+    padding: 11px 16px;
+    flex-grow: 1;
+    font-size: 14px;
+    color: var(--color-default);
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    min-width: 0;
+
+    transition: background-color 150ms, box-shadow 150ms;
+
+    &::placeholder {
+      color: #a9a9ac;
+    }
+
+    &:focus {
+      background-color: transparent;
+      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    &:active {
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .__icon + .__input {
+    padding-left: 36px;
+  }
+}
+
+@media only screen and (max-width: 919px) {
+  .n-input.__simple {
+    .__icon {
+      width: 18px;
+      height: 18px;
+
+      left: 4px;
+    }
+
+    .__input {
+      background-color: transparent;
+      padding: 4px 16px;
+      font-size: 15px;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    .__icon + .__input {
+      padding-left: 28px;
+    }
+  }
 }
 </style>
