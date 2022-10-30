@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-30 02:13:09
+ * @LastEditTime: 2022-10-31 00:35:43
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
@@ -161,7 +161,6 @@ const items2: iSelectItems[] = [
 
       &__search {
         flex: 1;
-        margin-right: 12px;
 
         input {
           background-color: transparent;
