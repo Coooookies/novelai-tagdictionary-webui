@@ -22,11 +22,11 @@ import { NIcon } from "../icon";
         <div class="__info-title_action">
           <div class="__info-title_action_item">
             <n-icon icon-name="like" />
-            <span>2,301</span>
+            <span>1.4k</span>
           </div>
           <div class="__info-title_action_item">
             <n-icon icon-name="view" />
-            <span>2,301</span>
+            <span>26.2k</span>
           </div>
         </div>
       </div>
@@ -69,14 +69,15 @@ import { NIcon } from "../icon";
       left: 0;
       top: 0;
       right: 0;
-      padding: 14px 14px 0;
+      padding: 14px 16px 0 14px;
 
       &__r18tag {
         border-radius: 4px;
         background-color: rgba(0, 0, 0, 0.35);
         color: white;
         font-size: 12px;
-        padding: 0 4px;
+        font-weight: 500;
+        padding: 0 6px;
         margin-right: auto;
       }
 
@@ -85,7 +86,7 @@ import { NIcon } from "../icon";
         flex-direction: row;
         align-items: center;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-        
+
         svg {
           width: 14px;
           height: 14px;
@@ -104,8 +105,6 @@ import { NIcon } from "../icon";
   & &__info {
     margin-top: 11px;
     .__info-subtitle {
-      margin-top: 2px;
-
       &_title {
         overflow: hidden;
         white-space: nowrap;
@@ -148,12 +147,12 @@ import { NIcon } from "../icon";
           svg {
             width: 16px;
             height: 16px;
-            fill: #909397;
+            fill: #a1a4a7;
           }
 
           span {
             margin-left: 3px;
-            font-size: 12px;
+            font-size: 12.5px;
             font-weight: 500;
             color: #363638;
           }
