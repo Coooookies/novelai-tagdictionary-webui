@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-31 00:35:43
+ * @LastEditTime: 2022-10-31 00:45:06
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
@@ -91,7 +91,7 @@ const items2: iSelectItems[] = [
         simple-on-mobile
         class="page-container__action__search"
         icon-name="search"
-        placeholder="搜索"
+        placeholder="善用搜索哦~"
         type="text"
       />
     </div>

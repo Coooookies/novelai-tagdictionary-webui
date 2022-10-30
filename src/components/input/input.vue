@@ -40,8 +40,8 @@ const inputHandler = (event: Event) => {
 
   .__icon {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
 
     left: 14px;
     top: 50%;
@@ -77,15 +77,15 @@ const inputHandler = (event: Event) => {
   }
 
   .__icon + .__input {
-    padding-left: 36px;
+    padding-left: 38px;
   }
 }
 
 @media only screen and (max-width: 919px) {
   .n-input.__simple {
     .__icon {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
 
       left: 4px;
     }
@@ -101,7 +101,7 @@ const inputHandler = (event: Event) => {
     }
 
     .__icon + .__input {
-      padding-left: 28px;
+      padding-left: 32px;
     }
   }
 }
