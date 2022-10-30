@@ -121,7 +121,6 @@ onItemChange(props.currentKey);
   pointer-events: none;
 }
 
-
 .n-select-box-transition-enter-active,
 .n-select-box-transition-leave-active {
   transform-origin: 0% 0%;
@@ -166,9 +165,11 @@ onItemChange(props.currentKey);
   }
 
   &:hover {
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2),
+      0 0 0 4px rgba(0, 0, 0, 0.08);
   }
 
+  &:active,
   &.__check {
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -178,8 +179,9 @@ onItemChange(props.currentKey);
   position: absolute;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 8px 22px -8px rgba(0, 0, 0, 0.1),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 70px 0 rgba(0, 0, 0, 0.15);
+  // box-shadow: 0 8px 22px -8px rgba(0, 0, 0, 0.1),
+  //   inset 0 0 0 1px rgba(0, 0, 0, 0.05);
   padding: 6px;
 
   list-style: none;
