@@ -51,11 +51,16 @@ const items2: iSelectItems[] = [
   {
     type: "item",
     key: "0",
-    value: "StableDiffusion - NovelAI",
+    value: "所有模型",
   },
   {
     type: "item",
     key: "1",
+    value: "StableDiffusion - NovelAI",
+  },
+  {
+    type: "item",
+    key: "2",
     value: "Naifu - NovelAI",
   },
 ];
