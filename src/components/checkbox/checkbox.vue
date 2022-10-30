@@ -100,7 +100,7 @@ const props = defineProps({
     color: var(--color-default);
 
     &.checked {
-      font-weight: bold;
+      font-weight: 600;
     }
   }
 }

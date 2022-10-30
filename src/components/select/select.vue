@@ -216,7 +216,7 @@ onItemChange(props.currentKey);
 
     .__checked + .__text {
       margin-left: 0;
-      font-weight: bold;
+      font-weight: 600;
     }
 
     &:hover {
