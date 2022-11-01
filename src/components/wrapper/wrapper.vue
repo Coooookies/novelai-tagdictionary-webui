@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 const props = defineProps({
   transitionDurationEnter: {
     type: Number,
@@ -13,6 +11,10 @@ const props = defineProps({
   visible: {
     type: Boolean,
     required: true,
+  },
+  mask: {
+    type: Boolean,
+    default: false,
   },
 });
 const emits = defineEmits<{
@@ -32,6 +34,9 @@ const emits = defineEmits<{
       <div
         v-show="props.visible"
         class="m-wrapper"
+        :class="{
+          __mark: props.mask,
+        }"
         :style="[
           `--enter-duration: ${props.transitionDurationEnter}ms`,
           `--leave-duration: ${props.transitionDurationEnter}ms`,
@@ -53,6 +58,10 @@ const emits = defineEmits<{
   right: 0;
   bottom: 0;
   z-index: 8000;
+
+  &.__mark {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .m-wrapper-transition-enter-active {
