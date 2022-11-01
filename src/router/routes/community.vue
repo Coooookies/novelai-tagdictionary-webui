@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-31 00:45:06
+ * @LastEditTime: 2022-11-02 00:45:15
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
@@ -20,11 +20,12 @@ import { useRouter } from "vue-router";
 import type { iSelectItems } from "@/components/select";
 
 const _18Plus = ref(true);
+const _articleRoute = "community:article";
 
 const route = useRoute();
 const router = useRouter();
 
-const originalArticle = route.name === "community:article";
+const originalArticle = route.name === _articleRoute;
 const itemKey = ref("0");
 const items: iSelectItems[] = [
   {
@@ -74,6 +75,14 @@ const items2: iSelectItems[] = [
   },
 ];
 
+function routeBack() {
+  router.back();
+}
+
+function routeToArticle() {
+  router.push({ name: "community:article" });
+}
+
 router.beforeEach((to, from, next) => {
   return to.name === "community" && originalArticle
     ? location.reload()
@@ -85,9 +94,9 @@ router.beforeEach((to, from, next) => {
   <teleport to="body">
     <div
       id="app-article-modal"
-      v-if="route.name === 'community:article' && !originalArticle"
+      v-if="route.name === _articleRoute && !originalArticle"
     >
-      <div class="__modal-bar"></div>
+      <div class="__modal-bar" @click="routeBack"></div>
       <div class="__modal-container">
         <router-view />
       </div>
@@ -98,6 +107,7 @@ router.beforeEach((to, from, next) => {
   </div>
   <div class="page-container" v-else>
     <div class="page-container__action">
+      <button @click="routeToArticle">push</button>
       <div class="page-container__action__selects">
         <n-select
           class="page-container__action__selects__item"
@@ -109,9 +119,6 @@ router.beforeEach((to, from, next) => {
           v-model:current-key="item2Key"
           :items="items2"
         />
-        <button @click="router.push({ name: 'community:article' })">
-          push
-        </button>
         <n-checkbox
           class="page-container__action__selects__checkbox"
           title="18+"
@@ -161,25 +168,63 @@ router.beforeEach((to, from, next) => {
 #app-article-modal {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 10000;
+  animation: app-article-modal-visible 290ms forwards;
 
   .__modal-bar {
-    height: 42px;
+    cursor: pointer;
   }
 
   .__modal-container {
     flex: 1;
     background-color: white;
+    overflow: hidden;
+    transform-origin: 5 0% 100%;
+  }
+
+  @keyframes app-article-modal-visible {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 }
 
 @media only screen and (min-width: 920px) {
+  #app-article-modal {
+    .__modal-bar {
+      height: 42px;
+    }
+
+    .__modal-container {
+      border-radius: 20px 20px 0 0;
+      animation: app-article-modal-fadein-desktop 420ms forwards
+        cubic-bezier(0.31, 0.36, 0, 1);
+    }
+
+    @keyframes app-article-modal-fadein-desktop {
+      0% {
+        border-radius: 40px 40px 0 0;
+        transform: scale(0.97) translateY(200px);
+      }
+
+      100% {
+        border-radius: 20px 0px 0 0;
+        transform: scale(1) translateY(0px);
+      }
+    }
+  }
+
   .page-container {
     padding-top: 83px;
     & &__action {
@@ -201,6 +246,28 @@ router.beforeEach((to, from, next) => {
 }
 
 @media only screen and (max-width: 919px) {
+  #app-article-modal {
+    .__modal-bar {
+      height: 0;
+    }
+
+    .__modal-container {
+      border-radius: none;
+      animation: app-article-modal-fadein-mobile 420ms forwards
+        cubic-bezier(0.31, 0.36, 0, 1);
+    }
+
+    @keyframes app-article-modal-fadein-mobile {
+      0% {
+        transform: scale(0.97) translateY(200px);
+      }
+
+      100% {
+        transform: scale(1) translateY(0px);
+      }
+    }
+  }
+
   .page-container {
     padding-top: 61px;
     & &__action {
