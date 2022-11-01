@@ -21,7 +21,7 @@ import { NIcon } from "../icon";
         <h3 class="__info-title_title">标题测试，长度测试</h3>
         <div class="__info-title_action">
           <div class="__info-title_action_item">
-            <n-icon icon-name="like" />
+            <n-icon class="__clickable" icon-name="like" />
             <span>1.4k</span>
           </div>
           <div class="__info-title_action_item">
@@ -46,6 +46,15 @@ import { NIcon } from "../icon";
     overflow: hidden;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+
+    &:hover {
+      .__image-container {
+        img {
+          transform: scale(1.08);
+        }
+      }
+    }
 
     .__image-container {
       position: absolute;
@@ -53,11 +62,14 @@ import { NIcon } from "../icon";
       right: 0;
       bottom: 0;
       left: 0;
+      overflow: hidden;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        -webkit-user-drag: none;
+        transition: transform 600ms cubic-bezier(.27,.39,0,1);
       }
     }
 
@@ -114,6 +126,11 @@ import { NIcon } from "../icon";
         font-size: 12px;
         font-weight: 500;
         color: #8c8f92;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
 
@@ -133,7 +150,12 @@ import { NIcon } from "../icon";
         white-space: nowrap;
         text-overflow: ellipsis;
         color: var(--color-default);
+        cursor: pointer;
         margin-right: 12px;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       &_action {
@@ -150,6 +172,12 @@ import { NIcon } from "../icon";
             width: 16px;
             height: 16px;
             fill: #a1a4a7;
+
+            &.__liked,
+            &.__clickable:hover {
+              cursor: pointer;
+              fill: var(--color-primary);
+            }
           }
 
           span {
