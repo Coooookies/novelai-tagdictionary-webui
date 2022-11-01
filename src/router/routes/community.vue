@@ -12,10 +12,19 @@ import { NSelect } from "@/components/select";
 import { NButton } from "@/components/button";
 import { NCheckbox } from "@/components/checkbox";
 import { NInput } from "@/components/input";
+
 import { ref } from "vue";
+import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
+
 import type { iSelectItems } from "@/components/select";
 
 const _18Plus = ref(true);
+
+const route = useRoute();
+const router = useRouter();
+
+const originalArticle = route.name === "community:article";
 const itemKey = ref("0");
 const items: iSelectItems[] = [
   {
@@ -64,10 +73,27 @@ const items2: iSelectItems[] = [
     value: "Naifu - NovelAI",
   },
 ];
+
+router.beforeEach((to, from, next) => {
+  return to.name === "community" && originalArticle
+    ? location.reload()
+    : next();
+});
 </script>
 
 <template>
-  <div class="page-container">
+  <teleport to="body">
+    <div
+      id="app-article-modal"
+      v-if="route.name === 'community:article' && !originalArticle"
+    >
+      <router-view />
+    </div>
+  </teleport>
+  <div class="page-container" v-if="originalArticle">
+    <router-view />
+  </div>
+  <div class="page-container" v-else>
     <div class="page-container__action">
       <div class="page-container__action__selects">
         <n-select
@@ -80,6 +106,9 @@ const items2: iSelectItems[] = [
           v-model:current-key="item2Key"
           :items="items2"
         />
+        <button @click="router.push({ name: 'community:article' })">
+          push
+        </button>
         <n-checkbox
           class="page-container__action__selects__checkbox"
           title="18+"
@@ -126,10 +155,20 @@ const items2: iSelectItems[] = [
   }
 }
 
+#app-article-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+}
+
 @media only screen and (min-width: 920px) {
   .page-container {
+    padding-top: 83px;
     & &__action {
-      margin-top: 83px;
       padding: 36px 72px 0;
 
       &__option {
@@ -149,10 +188,10 @@ const items2: iSelectItems[] = [
 
 @media only screen and (max-width: 919px) {
   .page-container {
+    padding-top: 61px;
     & &__action {
       flex-direction: row-reverse;
       border-bottom: solid 1px var(--nav-border-color);
-      margin-top: 61px;
       padding: 16px 20px;
 
       &__selects {

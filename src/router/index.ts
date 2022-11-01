@@ -8,6 +8,7 @@
  */
 import { createRouter, createWebHistory } from "vue-router";
 import communityView from "./routes/community.vue";
+import communityArticleView from "./routes/community/article.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,13 @@ const router = createRouter({
       path: "/community",
       name: "community",
       component: communityView,
+      children: [
+        {
+          path: "/community/article",
+          name: "community:article",
+          component: communityArticleView,
+        },
+      ],
     },
   ],
 });
