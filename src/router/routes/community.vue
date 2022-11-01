@@ -87,7 +87,10 @@ router.beforeEach((to, from, next) => {
       id="app-article-modal"
       v-if="route.name === 'community:article' && !originalArticle"
     >
-      <router-view />
+      <div class="__modal-bar"></div>
+      <div class="__modal-container">
+        <router-view />
+      </div>
     </div>
   </teleport>
   <div class="page-container" v-if="originalArticle">
@@ -156,13 +159,24 @@ router.beforeEach((to, from, next) => {
 }
 
 #app-article-modal {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 10000;
+
+  .__modal-bar {
+    height: 42px;
+  }
+
+  .__modal-container {
+    flex: 1;
+    background-color: white;
+  }
 }
 
 @media only screen and (min-width: 920px) {
