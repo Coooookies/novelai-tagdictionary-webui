@@ -84,8 +84,8 @@ import { NIcon } from "../icon";
       padding: 14px 16px 0 14px;
 
       &__tag {
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
+        // -webkit-backdrop-filter: blur(10px);
+        // backdrop-filter: blur(10px);
         border-radius: 4px;
         background-color: rgba(0, 0, 0, 0.35);
         color: white;
