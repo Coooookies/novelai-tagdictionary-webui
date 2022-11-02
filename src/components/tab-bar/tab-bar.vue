@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-28 00:33:54
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 08:49:31
+ * @LastEditTime: 2022-11-02 18:40:28
  * @FilePath: \novelai-tagdictionary-webui\src\components\tab-bar\tab-bar.vue
  * @Description: 
 -->
@@ -11,6 +11,7 @@ import tabTitle from "./tab-bar-icon-title.vue";
 import tabSubTitle from "./tab-bar-icon-subtitle.vue";
 import tabMenu from "./tab-bar-menu.vue";
 import tabMenuSwitch from "./tab-bar-menu-switch.vue";
+// import tabThemeSwitch from "./tab-bar-theme-switch.vue";
 
 import { NLanguageCaller } from "../language";
 import { NGuideButton } from "../button";
@@ -38,7 +39,10 @@ watch(tabLabOpened, () => {
       <!-- <div class="app-header__hr app-header__hr__icon" /> -->
       <div class="app-header__menu" :class="{ _open: tabLabOpened }">
         <tab-menu class="app-header__menu__content" />
-        <n-language-caller class="app-header__menu__language" />
+        <div class="app-header__menu__action">
+          <n-language-caller class="app-header__menu__action__language" />
+          <!-- <tab-theme-switch class="app-header__menu__action__theme" /> -->
+        </div>
       </div>
       <div class="app-header__action">
         <n-guide-button icon-name="upload" text="投稿" />
@@ -98,6 +102,12 @@ watch(tabLabOpened, () => {
   & &__menu {
     display: flex;
     flex: 1;
+
+    &__action {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   & &__action {
@@ -155,9 +165,17 @@ watch(tabLabOpened, () => {
       flex-direction: column;
       z-index: 5000;
 
-      &__language {
-        margin: auto 0 10px 10px;
+      &__action {
+        margin: 0 10px 10px;
         margin-top: auto;
+
+        &__language {
+          margin: 2px 0;
+        }
+
+        &__theme {
+          margin-left: auto;
+        }
       }
 
       & {
@@ -207,8 +225,12 @@ watch(tabLabOpened, () => {
       align-items: center;
       margin-left: 36px;
 
-      &__language {
+      &__action {
         margin-left: auto;
+
+        &__theme {
+          margin-left: 16px;
+        }
       }
     }
 
