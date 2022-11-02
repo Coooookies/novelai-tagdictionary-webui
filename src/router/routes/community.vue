@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 00:45:15
+ * @LastEditTime: 2022-11-02 09:37:39
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
@@ -80,7 +80,7 @@ function routeBack() {
 }
 
 function routeToArticle() {
-  router.push({ name: "community:article" });
+  router.push({ name: "community:article", query: { page: "123456" } });
 }
 
 router.beforeEach((to, from, next) => {
@@ -107,7 +107,7 @@ router.beforeEach((to, from, next) => {
   </div>
   <div class="page-container" v-else>
     <div class="page-container__action">
-      <button @click="routeToArticle">push</button>
+      <!-- <button @click="routeToArticle">push</button> -->
       <div class="page-container__action__selects">
         <n-select
           class="page-container__action__selects__item"
@@ -208,14 +208,14 @@ router.beforeEach((to, from, next) => {
 
     .__modal-container {
       border-radius: 20px 20px 0 0;
-      animation: app-article-modal-fadein-desktop 420ms forwards
-        cubic-bezier(0.31, 0.36, 0, 1);
+      animation: app-article-modal-fadein-desktop 600ms forwards
+        cubic-bezier(0.11, 0.71, 0, 1);
     }
 
     @keyframes app-article-modal-fadein-desktop {
       0% {
         border-radius: 40px 40px 0 0;
-        transform: scale(0.97) translateY(200px);
+        transform: scale(0.97) translateY(240px);
       }
 
       100% {
@@ -248,18 +248,18 @@ router.beforeEach((to, from, next) => {
 @media only screen and (max-width: 919px) {
   #app-article-modal {
     .__modal-bar {
-      height: 0;
+      display: none;
     }
 
     .__modal-container {
       border-radius: none;
-      animation: app-article-modal-fadein-mobile 420ms forwards
-        cubic-bezier(0.31, 0.36, 0, 1);
+      animation: app-article-modal-fadein-mobile 600ms forwards
+        cubic-bezier(0.11, 0.71, 0, 1);
     }
 
     @keyframes app-article-modal-fadein-mobile {
       0% {
-        transform: scale(0.97) translateY(200px);
+        transform: scale(0.97) translateY(240px);
       }
 
       100% {
