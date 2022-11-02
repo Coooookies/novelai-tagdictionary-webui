@@ -68,7 +68,7 @@ const inputHandler = (event: Event) => {
 
     &:focus {
       background-color: transparent;
-      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08);
     }
 
     &:active {
