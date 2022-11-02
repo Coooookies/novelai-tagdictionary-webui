@@ -73,13 +73,16 @@ const tabLabOpened = ref(false);
 
   & &__icon {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
     svg {
-      fill: var(--color-default);
+      &:nth-child(1) {
+        fill: var(--color-primary);
+      }
 
       &:nth-child(2) {
-        margin-top: 3px;
+        margin-left: 6px;
+        fill: var(--color-default);
       }
     }
   }
@@ -110,7 +113,13 @@ const tabLabOpened = ref(false);
     & &__icon {
       flex: 1;
       align-items: center;
-      padding-left: 30px;
+      padding-left: 6px;
+
+      svg {
+        &:nth-child(2) {
+          display: none;
+        }
+      }
     }
 
     & &__hr,
