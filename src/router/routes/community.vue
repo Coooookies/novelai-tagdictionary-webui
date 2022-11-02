@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 21:00:14
+ * @LastEditTime: 2022-11-02 21:30:41
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
@@ -92,7 +92,7 @@ function routeToArticle(id: string) {
 }
 
 function loadMoreShot() {
-  gridItems.value.push(...createFakeArticle(20));
+  gridItems.value.push(...createFakeArticle(22));
 }
 
 function loadMoreShotLazy() {
