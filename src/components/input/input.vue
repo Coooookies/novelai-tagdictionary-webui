@@ -58,7 +58,7 @@ const inputHandler = (event: Event) => {
     outline: none;
     background-color: rgba(0, 0, 0, 0.04);
     border-radius: 8px;
-    min-width: 0;
+    width: 0;
 
     transition: background-color 150ms, box-shadow 150ms;
 
