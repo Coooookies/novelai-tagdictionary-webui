@@ -2,22 +2,24 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 09:37:39
+ * @LastEditTime: 2022-11-02 21:00:14
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
 <script setup lang="ts">
-import { NGrid } from "@/components/grid";
+import { NGrid, NGridMore } from "@/components/grid";
 import { NSelect } from "@/components/select";
 import { NButton } from "@/components/button";
 import { NCheckbox } from "@/components/checkbox";
 import { NInput } from "@/components/input";
 
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useRouter } from "vue-router";
+import { createFakeArticle } from "@/utils/article-tester";
 
 import type { iSelectItems } from "@/components/select";
+import type { iGridItem } from "@/components/grid";
 
 const _18Plus = ref(true);
 const _articleRoute = "community:article";
@@ -75,13 +77,56 @@ const items2: iSelectItems[] = [
   },
 ];
 
+let loadingCounts = 0;
+
+const gridItems = ref<iGridItem[]>([]);
+const gridLoading = ref(false);
+const gridOver = ref(false);
+
 function routeBack() {
   router.back();
 }
 
-function routeToArticle() {
-  router.push({ name: "community:article", query: { page: "123456" } });
+function routeToArticle(id: string) {
+  router.push({ name: "community:article", query: { id } });
 }
+
+function loadMoreShot() {
+  gridItems.value.push(...createFakeArticle(20));
+}
+
+function loadMoreShotLazy() {
+  if (gridLoading.value || gridOver.value) return;
+
+  gridLoading.value = true;
+  setTimeout(() => {
+    if (loadingCounts < 3) {
+      loadingCounts++;
+      loadMoreShot();
+      gridLoading.value = false;
+    } else {
+      gridOver.value = true;
+    }
+  }, 1000 + Math.random() * 2000);
+}
+
+onMounted(() => {
+  loadMoreShot();
+});
+
+window.onscroll = () => {
+  const scrollTop =
+    document.documentElement.scrollTop || document.body.scrollTop;
+  const windowHeight =
+    document.documentElement.clientHeight || document.body.clientHeight;
+  const scrollHeight =
+    document.documentElement.scrollHeight || document.body.scrollHeight;
+  console.log(scrollTop + windowHeight, scrollHeight);
+
+  if (scrollTop + windowHeight >= scrollHeight) {
+    loadMoreShotLazy();
+  }
+};
 
 router.beforeEach((to, from, next) => {
   return to.name === "community" && originalArticle
@@ -135,7 +180,12 @@ router.beforeEach((to, from, next) => {
       />
     </div>
     <div class="page-container__content">
-      <n-grid />
+      <n-grid :items="gridItems" @on-view="routeToArticle" />
+      <n-grid-more
+        :over="gridOver"
+        :loading="gridLoading"
+        @click-more="loadMoreShotLazy"
+      />
     </div>
   </div>
 </template>
@@ -240,7 +290,7 @@ router.beforeEach((to, from, next) => {
     }
 
     & &__content {
-      padding: 36px 72px;
+      padding: 36px 72px 42px;
     }
   }
 }
