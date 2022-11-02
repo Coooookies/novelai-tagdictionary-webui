@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-28 00:33:54
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-31 01:01:45
+ * @LastEditTime: 2022-11-02 08:49:31
  * @FilePath: \novelai-tagdictionary-webui\src\components\tab-bar\tab-bar.vue
  * @Description: 
 -->
@@ -14,9 +14,14 @@ import tabMenuSwitch from "./tab-bar-menu-switch.vue";
 
 import { NLanguageCaller } from "../language";
 import { NGuideButton } from "../button";
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { vibration } from "@/utils/vibration";
 
 const tabLabOpened = ref(false);
+
+watch(tabLabOpened, () => {
+  vibration(40);
+});
 </script>
 
 <template>
@@ -24,7 +29,11 @@ const tabLabOpened = ref(false);
     <div class="app-header">
       <div class="app-header__icon">
         <tab-title />
-        <tab-sub-title />
+        <tab-sub-title
+          :class="{
+            __visible: tabLabOpened,
+          }"
+        />
       </div>
       <!-- <div class="app-header__hr app-header__hr__icon" /> -->
       <div class="app-header__menu" :class="{ _open: tabLabOpened }">
@@ -81,7 +90,6 @@ const tabLabOpened = ref(false);
       }
 
       &:nth-child(2) {
-        margin-left: 6px;
         fill: var(--color-default);
       }
     }
@@ -117,7 +125,16 @@ const tabLabOpened = ref(false);
 
       svg {
         &:nth-child(2) {
-          display: none;
+          margin-left: 8px;
+          visibility: hidden;
+          opacity: 0;
+
+          transition: visibility 200ms, opacity 200ms;
+
+          &.__visible {
+            visibility: visible;
+            opacity: 1;
+          }
         }
       }
     }
@@ -177,6 +194,12 @@ const tabLabOpened = ref(false);
 
     & &__icon {
       align-items: flex-start;
+
+      svg {
+        &:nth-child(2) {
+          margin-left: 6px;
+        }
+      }
     }
 
     & &__menu {
