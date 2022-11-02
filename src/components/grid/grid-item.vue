@@ -1,37 +1,82 @@
 <script setup lang="ts">
 import { NIcon } from "../icon";
+
+const props = defineProps({
+  imageSrc: {
+    type: String,
+    required: true,
+  },
+  imageCounts: {
+    type: Number,
+    default: 1,
+  },
+  likeCounts: {
+    type: Number,
+    default: 1,
+  },
+  viewCounts: {
+    type: Number,
+    default: 1,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  author: {
+    type: String,
+    required: true,
+  },
+  r18: Boolean,
+});
+
+const emits = defineEmits<{
+  (e: "click-like"): void;
+  (e: "click-author"): void;
+  (e: "click-article"): void;
+}>();
+
+const unitConverter = (count: number) =>
+  count < 1000 ? `${count}` : `${(count / 1000).toFixed(1)}k`;
 </script>
 
 <template>
   <li class="n-grid-content__item">
-    <div class="n-grid-content__item__banner">
+    <div class="n-grid-content__item__banner" @click="emits('click-article')">
       <div class="__image-container">
-        <img src="/1.png" />
+        <img :src="props.imageSrc" />
       </div>
       <div class="__image-marker">
-        <div class="__image-marker__tag">18+</div>
+        <div class="__image-marker__tag" v-if="props.r18">18+</div>
         <div class="__image-marker__info">
           <n-icon class="__icon" icon-name="document" />
-          <span>4</span>
+          <span>{{ props.imageCounts }}</span>
         </div>
       </div>
     </div>
     <div class="n-grid-content__item__info">
       <div class="__info-title">
-        <h3 class="__info-title_title">标题测试，长度测试</h3>
+        <h3 class="__info-title_title" @click="emits('click-article')">
+          {{ props.title }}
+        </h3>
         <div class="__info-title_action">
           <div class="__info-title_action_item">
-            <n-icon class="__clickable" icon-name="like" />
-            <span>1.4k</span>
+            <n-icon
+              class="__clickable"
+              icon-name="like"
+              @click="emits('click-like')"
+            />
+            <span>{{ unitConverter(props.likeCounts) }}</span>
           </div>
           <div class="__info-title_action_item">
             <n-icon icon-name="view" />
-            <span>26.2k</span>
+            <span>{{ unitConverter(props.viewCounts) }}</span>
           </div>
         </div>
       </div>
       <div class="__info-subtitle">
-        <h6 class="__info-subtitle_title">@ButterCookies</h6>
+        <h6 class="__info-subtitle_title" @click="emits('click-author')">
+          @{{ props.author }}
+        </h6>
       </div>
     </div>
   </li>
@@ -69,7 +114,7 @@ import { NIcon } from "../icon";
         height: 100%;
         object-fit: cover;
         -webkit-user-drag: none;
-        transition: transform 600ms cubic-bezier(.27,.39,0,1);
+        transition: transform 600ms cubic-bezier(0.27, 0.39, 0, 1);
       }
     }
 
@@ -92,14 +137,13 @@ import { NIcon } from "../icon";
         font-size: 12px;
         font-weight: 500;
         padding: 0 6px;
-        margin-right: auto;
       }
 
       &__info {
         display: inline-flex;
         flex-direction: row;
         align-items: center;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+        margin-left: auto;
 
         svg {
           width: 14px;
@@ -111,6 +155,11 @@ import { NIcon } from "../icon";
           margin-left: 4px;
           font-size: 12px;
           color: white;
+        }
+
+        svg,
+        span {
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
         }
       }
     }

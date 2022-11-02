@@ -2,42 +2,44 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-29 01:07:44
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-29 13:45:48
+ * @LastEditTime: 2022-11-02 19:58:16
  * @FilePath: \novelai-tagdictionary-webui\src\components\grid\grid.vue
  * @Description: 
 -->
 <script setup lang="ts">
-import gridItemVue from "./grid-item.vue";
+import type { iGridItem } from "./types";
+import gridItem from "./grid-item.vue";
+
+const emits = defineEmits<{
+  (e: "onView", id: string): void;
+  (e: "onLike", id: string): void;
+  (e: "onLink", url: string): void;
+}>();
+
+const props = defineProps({
+  items: {
+    type: Array as () => Array<iGridItem>,
+    default: [],
+  },
+});
 </script>
 
 <template>
   <ul class="n-grid-content">
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
-    <gridItemVue />
+    <template v-for="item in props.items">
+      <grid-item
+        :title="item.title"
+        :author="item.author"
+        :image-src="item.image"
+        :image-counts="item.imagecount"
+        :like-counts="item.likes"
+        :view-counts="item.views"
+        :r18="item.r18"
+        @click-like="emits('onLike', item.id)"
+        @click-article="emits('onView', item.id)"
+        @click-author="emits('onLink', item.authorUrl)"
+      />
+    </template>
   </ul>
 </template>
 
