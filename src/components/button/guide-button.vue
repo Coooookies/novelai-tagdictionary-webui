@@ -1,3 +1,11 @@
+<!--
+ * @Author: Coooookies admin@mitay.net
+ * @Date: 2022-10-28 20:53:37
+ * @LastEditors: Coooookies admin@mitay.net
+ * @LastEditTime: 2022-11-02 08:34:44
+ * @FilePath: \novelai-tagdictionary-webui\src\components\button\guide-button.vue
+ * @Description: 
+-->
 <script setup lang="ts">
 import { NIcon } from "../icon";
 
@@ -41,6 +49,7 @@ const props = defineProps({
   }
 
   & &__text {
+    white-space: nowrap;
     font-size: 14px;
     color: var(--button-primary-font-color);
   }

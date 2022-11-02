@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-29 16:03:45
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-10-29 16:38:06
+ * @LastEditTime: 2022-11-02 08:35:04
  * @FilePath: \novelai-tagdictionary-webui\src\components\button\button.vue
  * @Description: 
 -->
@@ -40,6 +40,7 @@ const props = defineProps({
   }
 
   & &__text {
+    white-space: nowrap;
     font-size: 14px;
     color: var(--color-default);
   }
