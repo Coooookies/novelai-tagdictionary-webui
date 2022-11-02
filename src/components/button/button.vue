@@ -2,13 +2,16 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-29 16:03:45
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 08:35:04
+ * @LastEditTime: 2022-11-02 20:26:50
  * @FilePath: \novelai-tagdictionary-webui\src\components\button\button.vue
  * @Description: 
 -->
 <script setup lang="ts">
 import selectMarker from "../select/select-marker.vue";
 
+const emits = defineEmits<{
+  (e: "click", ev: MouseEvent): void;
+}>();
 const props = defineProps({
   title: String,
   arrow: Boolean,
@@ -16,7 +19,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <button class="n-button">
+  <button class="n-button" @click="emits('click', $event)">
     <span class="n-button__text">{{ props.title }}</span>
     <select-marker class="n-button__marker" v-if="props.arrow" />
   </button>
@@ -27,17 +30,12 @@ const props = defineProps({
   display: flex;
   flex-direction: row;
   align-items: center;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
   background-color: transparent;
   border-radius: 8px;
   padding: 11px 16px;
 
   cursor: pointer;
   transition: box-shadow 200ms, opacity 200ms;
-
-  &:active {
-    transition: none;
-  }
 
   & &__text {
     white-space: nowrap;
@@ -56,20 +54,29 @@ const props = defineProps({
 
 @media only screen and (max-width: 919px) {
   .n-button {
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+
     &:active {
       opacity: 0.5;
+    }
+
+    &:active {
+      transition: none;
     }
   }
 }
 
 @media only screen and (min-width: 920px) {
   .n-button {
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+
     &:hover {
-      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2),
+        0 0 0 4px rgba(0, 0, 0, 0.08);
     }
 
     &:active {
-      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
     }
   }
 }
