@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-29 16:03:45
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 20:26:50
+ * @LastEditTime: 2022-11-02 21:33:05
  * @FilePath: \novelai-tagdictionary-webui\src\components\button\button.vue
  * @Description: 
 -->
@@ -30,6 +30,7 @@ const props = defineProps({
   display: flex;
   flex-direction: row;
   align-items: center;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
   background-color: transparent;
   border-radius: 8px;
   padding: 11px 16px;
@@ -54,8 +55,6 @@ const props = defineProps({
 
 @media only screen and (max-width: 919px) {
   .n-button {
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
-
     &:active {
       opacity: 0.5;
     }
@@ -68,7 +67,6 @@ const props = defineProps({
 
 @media only screen and (min-width: 920px) {
   .n-button {
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 
     &:hover {
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2),
