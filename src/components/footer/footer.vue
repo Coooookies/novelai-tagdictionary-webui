@@ -15,7 +15,7 @@ import tabSubTitle from "../tab-bar/tab-bar-icon-subtitle.vue";
           <tab-sub-title class="__app-logo__text" />
         </div>
         <p class="__app-description">
-          Percept是用于查询由人工智能技术生成的Anime作品的工具，为创作者提供想法。
+          Percept是用于整合由人工智能技术生成的Anime作品的网站，致力为创作者提供创意。
         </p>
       </div>
       <div class="app-footer__link">
@@ -43,7 +43,7 @@ import tabSubTitle from "../tab-bar/tab-bar-icon-subtitle.vue";
           <li class="__link-group__item"><a href="###">反馈</a></li>
         </ul>
         <ul class="app-footer__link__group">
-          <li class="__link-group__item __title">网站信息</li>
+          <li class="__link-group__item __title">吼姆吼姆</li>
           <li class="__link-group__item">
             © 2022 Percept. All rights reserved.
           </li>
@@ -68,7 +68,7 @@ import tabSubTitle from "../tab-bar/tab-bar-icon-subtitle.vue";
   z-index: -1;
 
   & &__icon {
-    fill: rgba(231, 231, 231, 1);
+    fill: rgba(235, 235, 235, 1);
     animation: icon-rotate-forever 80s linear infinite;
   }
 
@@ -103,9 +103,8 @@ import tabSubTitle from "../tab-bar/tab-bar-icon-subtitle.vue";
     }
 
     .__app-description {
-      font-weight: 500;
       font-size: 13px;
-      line-height: 160%;
+      line-height: 200%;
       color: rgba(135, 135, 139, 1);
     }
   }
@@ -120,7 +119,7 @@ import tabSubTitle from "../tab-bar/tab-bar-icon-subtitle.vue";
 
     &__group {
       list-style: none;
-      margin-right: 48px;
+      margin-right: 58px;
       margin-bottom: 32px;
 
       &:last-child {
@@ -137,8 +136,7 @@ import tabSubTitle from "../tab-bar/tab-bar-icon-subtitle.vue";
         &,
         a {
           color: rgba(89, 89, 89, 95);
-          font-weight: 500;
-          font-size: 13px;
+          font-size: 14px;
           text-decoration: none;
         }
 

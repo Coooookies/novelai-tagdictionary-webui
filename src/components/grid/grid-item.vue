@@ -129,8 +129,6 @@ const unitConverter = (count: number) =>
       padding: 14px 16px 0 14px;
 
       &__tag {
-        // -webkit-backdrop-filter: blur(10px);
-        // backdrop-filter: blur(10px);
         border-radius: 4px;
         background-color: rgba(0, 0, 0, 0.35);
         color: white;
@@ -159,7 +157,7 @@ const unitConverter = (count: number) =>
 
         svg,
         span {
-          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
         }
       }
     }
