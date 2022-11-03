@@ -121,7 +121,6 @@ window.onscroll = () => {
     document.documentElement.clientHeight || document.body.clientHeight;
   const scrollHeight =
     document.documentElement.scrollHeight || document.body.scrollHeight;
-  console.log(scrollTop + windowHeight, scrollHeight);
 
   if (scrollTop + windowHeight >= scrollHeight) {
     loadMoreShotLazy();
