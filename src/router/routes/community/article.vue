@@ -2,15 +2,34 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-11-01 20:22:52
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-05 17:08:54
+ * @LastEditTime: 2022-11-05 19:23:06
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community\article.vue
  * @Description: 
 -->
 <script setup lang="ts">
+import type { iNavigatorItem } from "@/components/navigator";
+
 import { useRoute } from "vue-router";
 import { NButton } from "@/components/button";
 import { NNavigator } from "@/components/navigator";
+import { ref } from "vue";
 
+const navItems: iNavigatorItem[] = [
+  {
+    key: "view",
+    value: "呈现",
+  },
+  {
+    key: "template",
+    value: "预设",
+  },
+  {
+    key: "works",
+    value: "作品集",
+  },
+];
+
+const navCurrentKey = ref(navItems[0].key);
 const route = useRoute();
 </script>
 
@@ -20,14 +39,17 @@ const route = useRoute();
     <div class="app-article__bar">
       <div class="app-article__bar__info">
         <div class="__info-description">
-          <p class="__title">白毛、猫娘、翅膀与海边</p>
-          <p class="__author">@BCookies</p>
+          <span class="__title">白毛、猫娘、翅膀与海边</span>
+          <span class="__author">@BCookies</span>
         </div>
         <div class="__info-action">
           <n-button icon-name="like" title="喜欢" mini />
         </div>
       </div>
-      <n-navigator />
+      <n-navigator :items="navItems" v-model:current-key="navCurrentKey" />
+      <div class="app-article__bar__container">
+        
+      </div>
     </div>
   </div>
 </template>
@@ -54,6 +76,8 @@ const route = useRoute();
       align-items: center;
 
       .__info-description {
+        display: flex;
+        flex-direction: column;
         flex: 1;
 
         .__title {
@@ -66,6 +90,15 @@ const route = useRoute();
           font-size: 12px;
           font-weight: 500;
           color: #8c8f92;
+        }
+
+        .__title,
+        .__author {
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }
@@ -81,6 +114,10 @@ const route = useRoute();
 
       &__info {
         padding: 26px 24px;
+      }
+
+      &__container {
+        padding: 24px;
       }
     }
   }
@@ -99,6 +136,10 @@ const route = useRoute();
 
       &__info {
         padding: 22px 20px;
+      }
+
+      &__container {
+        padding: 20px;
       }
     }
   }
