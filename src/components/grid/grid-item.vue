@@ -96,7 +96,8 @@ const unitConverter = (count: number) =>
     &:hover {
       .__image-container {
         img {
-          transform: scale(1.08);
+          transform: scale(1.05);
+          transition: transform 250ms cubic-bezier(0.27, 0.39, 0, 1);
         }
       }
     }

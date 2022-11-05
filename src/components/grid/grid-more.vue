@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-11-02 18:43:52
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-03 20:51:04
+ * @LastEditTime: 2022-11-05 16:10:36
  * @FilePath: \novelai-tagdictionary-webui\src\components\grid\grid-more.vue
  * @Description: 
 -->
@@ -24,6 +24,7 @@ const props = defineProps({
     <p class="__over" v-if="props.over">你已经到达了这个世界的尽头</p>
     <n-loader-triangle class="__loader" v-else-if="props.loading" />
     <n-button
+      ghost
       class="__more"
       title="加载更多"
       @click="emits('click-more')"
