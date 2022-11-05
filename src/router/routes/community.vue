@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-27 11:41:03
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 21:30:41
+ * @LastEditTime: 2022-11-05 16:10:53
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community.vue
  * @Description: 
 -->
@@ -169,7 +169,12 @@ router.beforeEach((to, from, next) => {
           v-model:checked="_18Plus"
         />
       </div>
-      <n-button class="page-container__action__option" title="条件过滤" arrow />
+      <n-button
+        class="page-container__action__option"
+        title="条件过滤"
+        arrow
+        ghost
+      />
       <n-input
         simple-on-mobile
         class="page-container__action__search"
