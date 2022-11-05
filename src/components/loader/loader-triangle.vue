@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-11-02 20:49:47
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 20:57:09
+ * @LastEditTime: 2022-11-04 12:57:25
  * @FilePath: \novelai-tagdictionary-webui\src\components\loader\loader-triangle.vue
  * @Description: 
 -->
@@ -18,7 +18,7 @@
 .n-loader__triangle {
   --path: var(--color-default);
   --dot: var(--color-primary);
-  --duration: 2s;
+  --duration: 1.5s;
   width: 48px;
   height: 44px;
   position: relative;
