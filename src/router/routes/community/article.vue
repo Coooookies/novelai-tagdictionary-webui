@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-11-01 20:22:52
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-05 19:23:06
+ * @LastEditTime: 2022-11-06 17:14:38
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community\article.vue
  * @Description: 
 -->
@@ -12,6 +12,7 @@ import type { iNavigatorItem } from "@/components/navigator";
 import { useRoute } from "vue-router";
 import { NButton } from "@/components/button";
 import { NNavigator } from "@/components/navigator";
+import { NInformation } from "@/components/information";
 import { ref } from "vue";
 
 const navItems: iNavigatorItem[] = [
@@ -47,9 +48,22 @@ const route = useRoute();
         </div>
       </div>
       <n-navigator :items="navItems" v-model:current-key="navCurrentKey" />
-      <div class="app-article__bar__container">
-        
+      <div
+        class="app-article__bar__container"
+        v-if="navCurrentKey === navItems[0].key"
+      >
+        <n-information />
+        <n-information />
+        <n-information />
       </div>
+      <div
+        class="app-article__bar__container"
+        v-if="navCurrentKey === navItems[1].key"
+      ></div>
+      <div
+        class="app-article__bar__container"
+        v-if="navCurrentKey === navItems[2].key"
+      ></div>
     </div>
   </div>
 </template>
