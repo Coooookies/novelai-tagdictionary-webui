@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-11-01 20:22:52
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-06 17:14:38
+ * @LastEditTime: 2022-11-07 21:30:53
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community\article.vue
  * @Description: 
 -->
@@ -52,9 +52,13 @@ const route = useRoute();
         class="app-article__bar__container"
         v-if="navCurrentKey === navItems[0].key"
       >
-        <n-information />
-        <n-information />
-        <n-information />
+        <n-information
+          title="简介"
+          value="There are moments in life when you miss someone so much that you just want to pick them from your dreams and hug them for real! Dream what you want to dream;go where you want to go;be what you want to be,because you have only one life and one chance to do all the things you want to do."
+          foldable
+        />
+        <n-information title="授权方式" value="个人使用" />
+        <n-information title="上传日期" value="2022/11/04" />
       </div>
       <div
         class="app-article__bar__container"
