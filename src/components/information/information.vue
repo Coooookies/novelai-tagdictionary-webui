@@ -51,14 +51,14 @@ const props = defineProps({
 
   &__title,
   &__fold {
-    color: #9d9d9d;
+    color: #656565;
   }
 
   &__fold {
     cursor: pointer;
 
     &:hover {
-      color: #afafaf;
+      color: #888888;
       text-decoration: underline;
     }
   }
