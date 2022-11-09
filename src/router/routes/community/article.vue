@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-11-01 20:22:52
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-07 21:30:53
+ * @LastEditTime: 2022-11-09 23:30:16
  * @FilePath: \novelai-tagdictionary-webui\src\router\routes\community\article.vue
  * @Description: 
 -->
@@ -10,11 +10,15 @@
 import type { iNavigatorItem } from "@/components/navigator";
 
 import { useRoute } from "vue-router";
+import { NGrid } from "@/components/grid";
 import { NButton } from "@/components/button";
 import { NNavigator } from "@/components/navigator";
 import { NInformation } from "@/components/information";
 import { ref } from "vue";
 
+import { createFakeArticle } from "@/utils/article-tester";
+
+const recommendArticles = createFakeArticle(8);
 const navItems: iNavigatorItem[] = [
   {
     key: "view",
@@ -67,7 +71,9 @@ const route = useRoute();
       <div
         class="app-article__bar__container"
         v-if="navCurrentKey === navItems[2].key"
-      ></div>
+      >
+        <n-grid :items="recommendArticles" column />
+      </div>
     </div>
   </div>
 </template>
@@ -87,6 +93,7 @@ const route = useRoute();
     display: flex;
     flex-direction: column;
     background-color: white;
+    overflow-y: auto;
 
     &__info {
       display: flex;

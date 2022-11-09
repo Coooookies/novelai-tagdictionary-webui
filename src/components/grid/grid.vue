@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-10-29 01:07:44
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-02 19:58:16
+ * @LastEditTime: 2022-11-09 23:29:04
  * @FilePath: \novelai-tagdictionary-webui\src\components\grid\grid.vue
  * @Description: 
 -->
@@ -17,6 +17,7 @@ const emits = defineEmits<{
 }>();
 
 const props = defineProps({
+  column: Boolean,
   items: {
     type: Array as () => Array<iGridItem>,
     default: [],
@@ -25,7 +26,13 @@ const props = defineProps({
 </script>
 
 <template>
-  <ul class="n-grid-content">
+  <ul
+    class="n-grid-content"
+    :class="{
+      __column: props.column,
+      __block: !props.column,
+    }"
+  >
     <template v-for="item in props.items">
       <grid-item
         :title="item.title"
@@ -35,6 +42,7 @@ const props = defineProps({
         :like-counts="item.likes"
         :view-counts="item.views"
         :r18="item.r18"
+        class="__item"
         @click-like="emits('onLike', item.id)"
         @click-article="emits('onView', item.id)"
         @click-author="emits('onLink', item.authorUrl)"
@@ -44,11 +52,25 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-.n-grid-content {
+.n-grid-content.__block {
   position: relative;
   display: grid;
   grid-gap: 36px;
   list-style: none;
+}
+
+.n-grid-content.__column {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  .__item {
+    margin-bottom: 28px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 @media only screen and (min-width: 1600px) {
