@@ -2,7 +2,7 @@
  * @Author: Coooookies admin@mitay.net
  * @Date: 2022-11-06 17:09:42
  * @LastEditors: Coooookies admin@mitay.net
- * @LastEditTime: 2022-11-07 21:32:42
+ * @LastEditTime: 2022-11-09 23:02:37
  * @FilePath: \novelai-tagdictionary-webui\src\components\information\information.vue
  * @Description: 
 -->
@@ -65,6 +65,7 @@ const props = defineProps({
 
   &__value {
     margin-top: 2px;
+    font-weight: 500;
     line-height: 150%;
     color: var(--color-default);
   }
@@ -79,7 +80,6 @@ const props = defineProps({
   &__title,
   &__value,
   &__fold {
-    font-weight: 500;
     font-size: 13px;
   }
 
