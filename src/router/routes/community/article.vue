@@ -14,6 +14,7 @@ import { NGrid } from "@/components/grid";
 import { NButton } from "@/components/button";
 import { NNavigator } from "@/components/navigator";
 import { NInformation } from "@/components/information";
+import { NScrollContainer } from "@/components/scroll-container";
 import { ref } from "vue";
 
 import { createFakeArticle } from "@/utils/article-tester";
@@ -41,7 +42,7 @@ const route = useRoute();
 <template>
   <div class="app-article">
     <div class="app-article__viewer"></div>
-    <div class="app-article__bar">
+    <n-scroll-container class="app-article__bar">
       <div class="app-article__bar__info">
         <div class="__info-description">
           <span class="__title">白毛、猫娘、翅膀与海边</span>
@@ -74,7 +75,7 @@ const route = useRoute();
       >
         <n-grid :items="recommendArticles" column />
       </div>
-    </div>
+    </n-scroll-container>
   </div>
 </template>
 
@@ -93,7 +94,6 @@ const route = useRoute();
     display: flex;
     flex-direction: column;
     background-color: white;
-    overflow-y: auto;
 
     &__info {
       display: flex;
