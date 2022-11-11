@@ -165,4 +165,12 @@ onUnmounted(() => {
     }
   }
 }
+
+@media only screen and (max-width: 919px) {
+  .n-scroll-container {
+    .__scroll-bar {
+      display: none;
+    }
+  }
+}
 </style>
